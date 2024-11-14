@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <script src="./datas.js"></script>
+    <script src="afficheur.js"></script>
+    <head>
+        <title>Title of the document</title>
+    </head>
+
+    <body>
+        <div class="player player1">
+            <div class="playerInfo">
+                <div class="info name" id="name1">null</div>
+                <div class="info surname" id="surname1">null</div>
+                <div class="info club" id="club1">null</div>
+            </div>
+            <div class="scoreInfo">
+                <a class="score ippon" id="ippon1">x</a>
+                <a class="score wazaari" id="wazaari1">x</a>
+                <a class="score kinza" id="kinza1">xx</a>
+            </div>
+            <div class="penalInfo" id="penal1"></div>
+        </div>
+        <div class="player player2">
+            <div class="playerInfo">
+                <div class="info name" id="name2">null</div>
+                <div class="info surname" id="surname2">null</div>
+                <div class="info club" id="club2">null</div>
+            </div>
+            <div class="scoreInfo">
+                <a class="score ippon" id="ippon2">x</a>
+                <a class="score wazaari" id="wazaari2">x</a>
+                <a class="score kinza" id="kinza2">xx</a>
+            </div>
+            <div class="penalInfo" id="penal2"></div>
+        </div>
+        <div class="timer">
+            <div class="infos">
+                <div
+                    id="infos"
+                    style="
+                        text-align: center;
+                        margin: 5vh 2vw;
+                        font-size: 1.8em;
+                    "></div>
+            </div>
+            <div class="clock" id="clock">00:00</div>
+            <div class="next">
+                <div style="margin-block: 5%; font-size: 1.25em">
+                    Se prépare :
+                </div>
+
+                <div id="p1" style="margin-block: 5%; font-size: 1.5em">
+                    <div>null null</div>
+                    <div>null</div>
+                </div>
+                <div id="p2" style="margin-block: 5%; font-size: 1.5em">
+                    <div>null null</div>
+                    <div>null</div>
+                </div>
+            </div>
+        </div>
+        <div class="osaekomi" id="osaekomi"></div>
+
+        <script>
+            call()
+        </script>
+    </body>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 600;
+            /**/
+            .player {
+                height: 35vh;
+                display: flex;
+                /**/
+                .playerInfo {
+                    flex-wrap: wrap;
+                    height: 100%;
+                    width: 32.5vw;
+                    .name {
+                        padding: 2vh 0 0 2vw;
+                        font-size: 5vw;
+                    }
+                    .surname {
+                        padding: 0 0 0 2vw;
+                        font-size: 5vw;
+                    }
+                    .club {
+                        padding: 3vh 0 0 2vw;
+                        font-size: 3vw;
+                    }
+                }
+                .scoreInfo {
+                    flex-wrap: wrap;
+                    height: 100%;
+                    width: 60vw;
+                    text-align: center;
+                    /**/
+                    .score {
+                        font-size: 18vw;
+                        margin: 0 2.8vw;
+                        color: inherit;
+                    }
+                }
+                .penalInfo {
+                    flex-wrap: wrap;
+                    height: 100%;
+                    width: 7.5vw;
+                    .penal {
+                        border: solid 2px black;
+                        font-size: 3vw;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .shido {
+                        height: calc((100% - 6 * 2px) / 3);
+                        background-color: yellow;
+                        color: black;
+                    }
+                    .hansokumake {
+                        height: calc(100% - 2 * 2px);
+                        background-color: red;
+                        color: white;
+                    }
+                }
+            }
+            .player1 {
+                background-color: red;
+                color: white;
+            }
+            .player2 {
+                background-color: white;
+                color: black;
+            }
+            .timer {
+                height: 30vh;
+                background-color: black;
+                color: white;
+                display: flex;
+                .infos {
+                    width: 25vw;
+                }
+                .clock {
+                    width: 50vw;
+                    font-size: 12vw;
+                    text-align: center;
+                }
+                .next {
+                    width: 25vw;
+                }
+            }
+            .osaekomi {
+                width: 50vw;
+                height: 6vh;
+                position: absolute;
+                top: 32vh;
+                left: 37vw;
+                display: flex;
+
+                .tempsEcoule,
+                .tempsRestant {
+                    height: 100%;
+                }
+                .digit {
+                    width: 8%;
+                    padding: 1vh 0;
+                    text-align: center;
+                    font-size: 1.5em;
+                }
+            }
+        }
+    </style>
+</html>
