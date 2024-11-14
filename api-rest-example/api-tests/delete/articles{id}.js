@@ -1,5 +1,5 @@
 const articleId = 1 // Remplacez par l'ID de l'article que vous voulez supprimer
-fetch(`http://localhost:3000/articles/${articleId}`, {
+fetch(`https://scoreboard-2025.onrender.com/articles/${articleId}`, {
     method: "DELETE",
 })
     .then((response) => {

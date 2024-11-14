@@ -4,7 +4,7 @@ const updatedArticle = {
     content: "Contenu mis à jour",
 }
 
-fetch(`http://localhost:3000/articles/${articleId}`, {
+fetch(`https://scoreboard-2025.onrender.com/articles/${articleId}`, {
     method: "PUT",
     headers: {
         "Content-Type": "application/json",
