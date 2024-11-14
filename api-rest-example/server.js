@@ -81,6 +81,53 @@ app.delete("/articles/:id", (req, res) => {
     }
 })
 
+let scoreboards = [
+    {
+        id: 1,
+        timer: 0,
+        hajime: false,
+        goldenscore: false,
+        combattant1: {
+            ippon: 0,
+            wazaari: 0,
+            kinza: 0,
+            shido: 0,
+            hansokumake: null,
+            osaekomitimer: 0,
+        },
+        combattant2: {
+            ippon: 0,
+            wazaari: 0,
+            kinza: 0,
+            shido: 0,
+            hansokumake: null,
+            osaekomitimer: 0,
+        },
+    },
+    {
+        id: 2,
+        timer: 0,
+        hajime: false,
+        goldenscore: false,
+        combattant1: {
+            ippon: 0,
+            wazaari: 0,
+            kinza: 0,
+            shido: 0,
+            hansokumake: null,
+            osaekomitimer: 0,
+        },
+        combattant2: {
+            ippon: 0,
+            wazaari: 0,
+            kinza: 0,
+            shido: 0,
+            hansokumake: null,
+            osaekomitimer: 0,
+        },
+    },
+]
+
 // Démarrer le serveur
 app.listen(PORT, () => {
     console.log(`Serveur démarré sur http://localhost:${PORT}`)
