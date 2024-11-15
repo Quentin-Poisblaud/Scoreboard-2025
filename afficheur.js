@@ -62,10 +62,14 @@ function call() {
             tmp2 = `<div class="penal hansokumake">${player2.penalInfo.hansokumake}</div>`
     }
     document.getElementById("penal2").innerHTML = tmp2
-    document.getElementById("clock").innerHTML =
+    let tmpTime =
         ("0" + Math.floor(timer / 60)).slice(-2) +
         ":" +
         ("0" + (timer % 60)).slice(-2)
+    let tmpColor = hajime ? (goldenscore ? "gold" : "lime") : "red"
+    document.getElementById(
+        "clock"
+    ).innerHTML = `<div style="color:${tmpColor}">${tmpTime}</div>`
     document.getElementById(
         "p1"
     ).innerHTML = `<div>${nexts.p1.fullname}</div><div>${nexts.p1.club}</div>`

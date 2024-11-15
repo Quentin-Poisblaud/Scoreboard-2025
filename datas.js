@@ -33,3 +33,6 @@ let infos = `<div>Tournoi interne du 2LJC</div>
 
 let osaekomiTimer = 0
 let osaekomiIsRed = false
+
+let hajime = true
+let goldenscore = false
