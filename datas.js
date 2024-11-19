@@ -37,8 +37,7 @@ let osaekomiIsRed = false
 let hajime = true
 let goldenscore = false
 
-async function fetchAndUpdate() {
-    const tableId = 1 // Remplacez par l'ID de l'article que vous voulez lire
+async function fetchAndUpdate(tableId) {
     try {
         const response = await fetch(
             `https://scoreboard-2025.onrender.com/tables/${tableId}`

@@ -1,4 +1,4 @@
-function call() {
+function call(id) {
     const hansokumake = "H" | "X" | "M" | "F" | null
 
     document.getElementById("name1").innerHTML = player1.playerInfo.name
@@ -89,8 +89,8 @@ function call() {
     }
     setTimeout(() => {
         //window.location.reload()
-        fetchAndUpdate().then(() => {
-            call()
+        fetchAndUpdate(id).then(() => {
+            call(id)
         })
     }, 1000)
 }
