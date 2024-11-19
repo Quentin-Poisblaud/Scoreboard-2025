@@ -91,6 +91,18 @@ app.delete("/articles/:id", (req, res) => {
     }
 })
 
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
 let tables = [
     {
         id: 1,
@@ -137,12 +149,230 @@ let tables = [
 // Obtenir les infos de la table id (GET)
 app.get("/tables/:id", (req, res) => {
     const table = tables.find((a) => a.id === parseInt(req.params.id))
-    if (table) {
-        res.json(table)
-    } else {
-        res.status(404).send("Table non trouvée")
-    }
+    if (table) res.json(table)
+    else res.status(404).send("Table non trouvée")
 })
+
+app.put("/tables/:id/:isPlayer1/ippon/:isAdd", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        if (req.params.isPlayer1 == "true") {
+            if (req.params.isAdd == "true") {
+                if (table.player1.scoreInfo.ippon != 9) {
+                    table.player1.scoreInfo.ippon += 1
+                    res.json(table)
+                } else res.status(412).send("Valeur maximale déjà atteinte")
+            } else {
+                if (table.player1.scoreInfo.ippon != 0) {
+                    table.player1.scoreInfo.ippon -= 1
+                    res.json(table)
+                } else res.status(412).send("Valeur minimale déjà atteinte")
+            }
+        } else {
+            if (req.params.isAdd == "true") {
+                if (table.player2.scoreInfo.ippon != 9) {
+                    table.player2.scoreInfo.ippon += 1
+                    res.json(table)
+                } else res.status(412).send("Valeur maximale déjà atteinte")
+            } else {
+                if (table.player2.scoreInfo.ippon != 0) {
+                    table.player2.scoreInfo.ippon -= 1
+                    res.json(table)
+                } else res.status(412).send("Valeur minimale déjà atteinte")
+            }
+        }
+    } else res.status(404).send("Table non trouvé")
+})
+
+app.put("/tables/:id/:isPlayer1/wazaari/:isAdd", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        if (req.params.isPlayer1 == "true") {
+            if (req.params.isAdd == "true") {
+                if (table.player1.scoreInfo.wazaari != 9) {
+                    table.player1.scoreInfo.wazaari += 1
+                    res.json(table)
+                } else res.status(412).send("Valeur maximale déjà atteinte")
+            } else {
+                if (table.player1.scoreInfo.wazaari != 0) {
+                    table.player1.scoreInfo.wazaari -= 1
+                    res.json(table)
+                } else res.status(412).send("Valeur minimale déjà atteinte")
+            }
+        } else {
+            if (req.params.isAdd == "true") {
+                if (table.player2.scoreInfo.wazaari != 9) {
+                    table.player2.scoreInfo.wazaari += 1
+                    res.json(table)
+                } else res.status(412).send("Valeur maximale déjà atteinte")
+            } else {
+                if (table.player2.scoreInfo.wazaari != 0) {
+                    table.player2.scoreInfo.wazaari -= 1
+                    res.json(table)
+                } else res.status(412).send("Valeur minimale déjà atteinte")
+            }
+        }
+    } else res.status(404).send("Table non trouvé")
+})
+
+app.put("/tables/:id/:isPlayer1/kinza/:isAdd", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        if (req.params.isPlayer1 == "true") {
+            if (req.params.isAdd == "true") {
+                if (table.player1.scoreInfo.kinza != 99) {
+                    table.player1.scoreInfo.kinza += 1
+                    res.json(table)
+                } else res.status(412).send("Valeur maximale déjà atteinte")
+            } else {
+                if (table.player1.scoreInfo.kinza != 0) {
+                    table.player1.scoreInfo.kinza -= 1
+                    res.json(table)
+                } else res.status(412).send("Valeur minimale déjà atteinte")
+            }
+        } else {
+            if (req.params.isAdd == "true") {
+                if (table.player2.scoreInfo.kinza != 99) {
+                    table.player2.scoreInfo.kinza += 1
+                    res.json(table)
+                } else res.status(412).send("Valeur maximale déjà atteinte")
+            } else {
+                if (table.player2.scoreInfo.kinza != 0) {
+                    table.player2.scoreInfo.kinza -= 1
+                    res.json(table)
+                } else res.status(412).send("Valeur minimale déjà atteinte")
+            }
+        }
+    } else res.status(404).send("Table non trouvé")
+})
+app.put("/tables/:id/:isPlayer1/shido/:isAdd", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        if (req.params.isPlayer1 == "true") {
+            if (req.params.isAdd == "true") {
+                if (table.player1.penalInfo.shido != 3) {
+                    table.player1.penalInfo.shido += 1
+                    res.json(table)
+                } else res.status(412).send("Valeur maximale déjà atteinte")
+            } else {
+                if (table.player1.penalInfo.shido != 0) {
+                    table.player1.penalInfo.shido -= 1
+                    res.json(table)
+                } else res.status(412).send("Valeur minimale déjà atteinte")
+            }
+        } else {
+            if (req.params.isAdd == "true") {
+                if (table.player2.penalInfo.shido != 3) {
+                    table.player2.penalInfo.shido += 1
+                    res.json(table)
+                } else res.status(412).send("Valeur maximale déjà atteinte")
+            } else {
+                if (table.player2.penalInfo.shido != 0) {
+                    table.player2.penalInfo.shido -= 1
+                    res.json(table)
+                } else res.status(412).send("Valeur minimale déjà atteinte")
+            }
+        }
+    } else res.status(404).send("Table non trouvé")
+})
+app.put("/tables/:id/:isPlayer1/hansokumake/:value", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        if (req.params.isPlayer1 == "true") {
+            switch (req.params.value) {
+                case "null":
+                    table.player1.penalInfo.hansokumake = null
+                    res.json(table)
+                    break
+                case "H":
+                case "X":
+                case "M":
+                case "F":
+                    table.player1.penalInfo.hansokumake = req.params.value
+                    res.json(table)
+                    break
+                default:
+                    res.status(422).send("Valeur non autorisée")
+            }
+        } else {
+            switch (req.params.value) {
+                case "null":
+                    table.player2.penalInfo.hansokumake = null
+                    res.json(table)
+                    break
+                case "H":
+                case "X":
+                case "M":
+                case "F":
+                    table.player2.penalInfo.hansokumake = req.params.value
+                    res.json(table)
+                    break
+                default:
+                    res.status(422).send("Valeur non autorisée")
+            }
+        }
+    } else res.status(404).send("Table non trouvé")
+})
+
+/* body sous la forme :
+ * {name: "blablou",
+ *  surname: "bloubla",
+ *  club: "LOUL"}
+ */
+app.put("/tables/:id/:isPlayer1/playerInfos", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        if (req.params.isPlayer1 == "true") {
+            table.player1.playerInfo.name = req.body.name
+            table.player1.playerInfo.surname = req.body.surname
+            table.player1.playerInfo.club = req.body.club
+            res.json(table)
+        } else {
+            table.player2.playerInfo.name = req.body.name
+            table.player2.playerInfo.surname = req.body.surname
+            table.player2.playerInfo.club = req.body.club
+            res.json(table)
+        }
+    } else res.status(404).send("Table non trouvé")
+})
+app.put("/tables/:id/timer/:time", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        let parsedInt = parseInt(req.params.time)
+        if (0 <= parsedInt && parsedInt < 3600) {
+            table.timer = parsedInt
+        } else res.status(422).send("Valeur non autorisée")
+    } else res.status(404).send("Table non trouvé")
+})
+app.put("/tables/:id/osaekomiTimer/:time", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        let parsedInt = parseInt(req.params.time)
+        if (0 <= parsedInt && parsedInt <= 20) {
+            table.osaekomiTimer = parsedInt
+        } else res.status(422).send("Valeur non autorisée")
+    } else res.status(404).send("Table non trouvé")
+})
+app.put("/tables/:id/hajime/", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        table.hajime = !table.hajime
+    } else res.status(404).send("Table non trouvé")
+})
+app.put("/tables/:id/goldenscore/", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        table.goldenscore = !table.goldenscore
+    } else res.status(404).send("Table non trouvé")
+})
+app.put("/tables/:id/osaekomiIsRed/", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        table.osaekomiIsRed = !table.osaekomiIsRed
+    } else res.status(404).send("Table non trouvé")
+})
+
+//TODO: faire les PUT pour infos et nexts
 
 // Démarrer le serveur
 app.listen(PORT, () => {
