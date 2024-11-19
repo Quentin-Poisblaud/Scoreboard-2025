@@ -81,6 +81,59 @@ app.delete("/articles/:id", (req, res) => {
     }
 })
 
+let tables = [
+    {
+        id: 1,
+        player1: {
+            playerInfo: {
+                name: "POISBLAUD",
+                surname: "Quentin",
+                club: "2LJC",
+            },
+            scoreInfo: { ippon: 0, wazaari: 0, kinza: 0 },
+            penalInfo: {
+                shido: 0,
+                hansokumake: null,
+            },
+        },
+        player2: {
+            playerInfo: {
+                name: "POISBLAUD",
+                surname: "Quentin",
+                club: "2LJC",
+            },
+            scoreInfo: { ippon: 0, wazaari: 0, kinza: 0 },
+            penalInfo: {
+                shido: 0,
+                hansokumake: null,
+            },
+        },
+        timer: 300,
+        nexts: {
+            p1: { fullname: "POISBLAUD Quentin", club: "2LJC" },
+            p2: { fullname: "POISBLAUD Quentin", club: "2LJC" },
+        },
+        infos: `<div>Tournoi interne du 2LJC</div>
+                     <div>01 Janvier 2000</div>
+                     <div>Poussins</div>`,
+        osaekomiTimer: 0,
+        osaekomiIsRed: false,
+
+        hajime: true,
+        goldenscore: false,
+    },
+]
+
+// Obtenir les infos de la table id (GET)
+app.get("/tables/:id", (req, res) => {
+    const table = tables.find((a) => a.id === parseInt(req.params.id))
+    if (table) {
+        res.json(table)
+    } else {
+        res.status(404).send("Table non trouvée")
+    }
+})
+
 // Démarrer le serveur
 app.listen(PORT, () => {
     console.log(`Serveur démarré sur http://localhost:${PORT}`)

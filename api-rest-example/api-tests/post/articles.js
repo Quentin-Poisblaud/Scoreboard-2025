@@ -3,7 +3,7 @@ const newArticle = {
     content: "Contenu du nouvel article",
 }
 
-fetch("http://localhost:3000/articles", {
+fetch("https://scoreboard-2025.onrender.com/articles", {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
