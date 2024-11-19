@@ -1,3 +1,30 @@
+async function fetchAndUpdate(tableId) {
+    try {
+        const response = await fetch(
+            //TODO: généraliser l'URL
+            `https://scoreboard-2025.onrender.com/tables/${tableId}`
+        )
+
+        if (!response.ok) {
+            throw new Error("Table non trouvée")
+        }
+        const result = await response.json()
+        player1 = result.player1
+        player2 = result.player2
+        timer = result.timer
+        nexts = result.nexts
+        infos = result.infos
+        osaekomiTimer = result.osaekomiTimer
+        osaekomiIsRed = result.osaekomiIsRed
+        hajime = result.hajime
+        goldenscore = result.goldenscore
+
+        console.log("Table récupérée :", result)
+    } catch (error) {
+        console.error("Erreur :", error)
+    }
+}
+
 let player1 = {
     playerInfo: {
         name: "null",
@@ -36,29 +63,3 @@ let osaekomiIsRed = false
 
 let hajime = true
 let goldenscore = false
-
-async function fetchAndUpdate(tableId) {
-    try {
-        const response = await fetch(
-            `https://scoreboard-2025.onrender.com/tables/${tableId}`
-        )
-
-        if (!response.ok) {
-            throw new Error("Table non trouvée")
-        }
-        const result = await response.json()
-        player1 = result.player1
-        player2 = result.player2
-        timer = result.timer
-        nexts = result.nexts
-        infos = result.infos
-        osaekomiTimer = result.osaekomiTimer
-        osaekomiIsRed = result.osaekomiIsRed
-        hajime = result.hajime
-        goldenscore = result.goldenscore
-
-        console.log("Table récupérée :", result)
-    } catch (error) {
-        console.error("Erreur :", error)
-    }
-}
