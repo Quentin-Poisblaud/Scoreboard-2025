@@ -62,7 +62,9 @@
         <div class="osaekomi" id="osaekomi"></div>
 
         <script>
-            call()
+            fetchAndUpdate().then(() => {
+                call()
+            })
         </script>
     </body>
 

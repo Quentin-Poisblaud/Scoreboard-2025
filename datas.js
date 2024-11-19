@@ -1,38 +1,65 @@
 let player1 = {
     playerInfo: {
-        name: "POISBLAUD",
-        surname: "Quentin",
-        club: "2LJC",
+        name: "null",
+        surname: "null",
+        club: "null",
     },
-    scoreInfo: { ippon: 0, wazaari: 0, kinza: 0 },
+    scoreInfo: { ippon: "x", wazaari: "x", kinza: "xx" },
     penalInfo: {
-        shido: 0,
+        shido: "xx",
         hansokumake: null,
     },
 }
 let player2 = {
     playerInfo: {
-        name: "POISBLAUD",
-        surname: "Quentin",
-        club: "2LJC",
+        name: "null",
+        surname: "null",
+        club: "null",
     },
-    scoreInfo: { ippon: 0, wazaari: 0, kinza: 0 },
+    scoreInfo: { ippon: "x", wazaari: "x", kinza: "xx" },
     penalInfo: {
-        shido: 0,
+        shido: "x",
         hansokumake: null,
     },
 }
-let timer = 300
+let timer = 0
 let nexts = {
-    p1: { fullname: "POISBLAUD Quentin", club: "2LJC" },
-    p2: { fullname: "POISBLAUD Quentin", club: "2LJC" },
+    p1: { fullname: "null null", club: "null" },
+    p2: { fullname: "null null", club: "null" },
 }
-let infos = `<div>Tournoi interne du 2LJC</div>
-             <div>01 Janvier 2000</div>
-             <div>Poussins</div>`
+let infos = `<div>null</div>
+             <div>null</div>
+             <div>null</div>`
 
 let osaekomiTimer = 0
 let osaekomiIsRed = false
 
 let hajime = true
 let goldenscore = false
+
+async function fetchAndUpdate() {
+    const tableId = 1 // Remplacez par l'ID de l'article que vous voulez lire
+    try {
+        const response = await fetch(
+            `https://scoreboard-2025.onrender.com/tables/${tableId}`
+        )
+
+        if (!response.ok) {
+            throw new Error("Table non trouvée")
+        }
+        const result = await response.json()
+        player1 = result.player1
+        player2 = result.player2
+        timer = result.timer
+        nexts = result.nexts
+        infos = result.infos
+        osaekomiTimer = result.osaekomiTimer
+        osaekomiIsRed = result.osaekomiIsRed
+        hajime = result.hajime
+        goldenscore = result.goldenscore
+
+        console.log("Table récupérée :", result)
+    } catch (error) {
+        console.error("Erreur :", error)
+    }
+}

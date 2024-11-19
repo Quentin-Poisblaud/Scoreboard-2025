@@ -32,14 +32,14 @@ function call() {
     }
     document.getElementById("penal1").innerHTML = tmp1
 
-    document.getElementById("name2").innerHTML = player1.playerInfo.name
-    document.getElementById("surname2").innerHTML = player1.playerInfo.surname
-    document.getElementById("club2").innerHTML = player1.playerInfo.club
+    document.getElementById("name2").innerHTML = player2.playerInfo.name
+    document.getElementById("surname2").innerHTML = player2.playerInfo.surname
+    document.getElementById("club2").innerHTML = player2.playerInfo.club
 
-    document.getElementById("ippon2").innerHTML = player1.scoreInfo.ippon
-    document.getElementById("wazaari2").innerHTML = player1.scoreInfo.wazaari
+    document.getElementById("ippon2").innerHTML = player2.scoreInfo.ippon
+    document.getElementById("wazaari2").innerHTML = player2.scoreInfo.wazaari
     document.getElementById("kinza2").innerHTML = (
-        "0" + player1.scoreInfo.kinza
+        "0" + player2.scoreInfo.kinza
     ).slice(-2)
 
     let tmp2 = ""
@@ -88,6 +88,9 @@ function call() {
             }">${osaekomiTimer}</div>`
     }
     setTimeout(() => {
-        window.location.reload()
+        //window.location.reload()
+        fetchAndUpdate().then(() => {
+            call()
+        })
     }, 1000)
 }
